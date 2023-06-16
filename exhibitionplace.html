@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>전시 공간</title>
+  <style>
+    .gray-text {
+      color: gray;
+    }
+    .red-check {
+      color: red;
+    }
+    .exhibition-space {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .exhibition {
+      width: 300px;
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid gray;
+      cursor: pointer;
+    }
+    .exhibition img {
+      width: 300px;
+      height: 300px;
+    }
+    .exhibition-name {
+      font-weight: bold;
+    }
+    .exhibition-info {
+      display: none;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>전시 공간</h1>
+  
+  <div>
+    <h2>전시 공간</h2>
+    <hr>
+    
+    <div>
+      <label>
+        <input type="checkbox" class="region-checkbox" value="all"> 전체
+      </label>
+      <label>
+        <input type="checkbox" class="region-checkbox" value="gaepo"> 개포동
+      </label>
+      <label>
+        <input type="checkbox" class="region-checkbox" value="nonhyeon"> 논현동
+      </label>
+      <label>
+        <input type="checkbox" class="region-checkbox" value="daechi"> 대치동
+      </label>
+      <label>
+        <input type="checkbox" class="region-checkbox" value="dogok"> 도곡동
+      </label>
+      <label>
+        <input type="checkbox" class="region-checkbox" value="samsung"> 삼성동
+      </label>
+      <label>
+        <input type="checkbox" class="region-checkbox" value="segok"> 세곡동
+      </label>
+      <label>
+        <input type="checkbox" class="region-checkbox" value="suseo"> 수서동
+      </label>
+      <label>
+        <input type="checkbox" class="region-checkbox" value="sinsa"> 신사동
+      </label>
+      <label>
+        <input type="checkbox" class="region-checkbox" value="apgujeong"> 압구정동
+      </label>
+      <label>
+        <input type="checkbox" class="region-checkbox" value="yeoksam"> 역삼동
+      </label>
+      <label>
+        <input type="checkbox" class="region-checkbox" value="ilwon"> 일원동
+      </label>
+      <label>
+        <input type="checkbox" class="region-checkbox" value="cheongdam"> 청담동
+      </label>
+    </div>
+    
+    <div class="exhibition-space">
+      <div class="exhibition">
+        <img src="exhibition1.jpg" alt="전시 공간 1">
+        <div class="exhibition-name">전시 공간 1</div>
+      </div>
+      
+      <div class="exhibition">
+        <img src="exhibition2.jpg" alt="전시 공간 2">
+        <div class="exhibition-name">전시 공간 2</div>
+      </div>
+      
+      <div class="exhibition">
+        <img src="exhibition3.jpg" alt="전시 공간 3">
+        <div class="exhibition-name">전시 공간 3</div>
+      </div>
+      
+      <!-- 이하 전시 공간 목록을 추가할 수 있음 -->
+      
+    </div>
+    
+  </div>
+
+  <script>
+    var regionCheckboxes = document.querySelectorAll(".region-checkbox");
+    var exhibitions = document.querySelectorAll(".exhibition");
+
+    regionCheckboxes.forEach(function(checkbox) {
+      checkbox.addEventListener("change", function() {
+        var selectedRegion = this.value;
+
+        exhibitions.forEach(function(exhibition) {
+          var region = exhibition.dataset.region;
+
+          if (selectedRegion === "all" || selectedRegion === region) {
+            exhibition.style.display = "block";
+          } else {
+            exhibition.style.display = "none";
+          }
+        });
+      });
+    });
+
+    exhibitions.forEach(function(exhibition) {
+      exhibition.addEventListener("click", function() {
+        this.querySelector(".exhibition-info").style.display = "block";
+      });
+    });
+  </script>
+</body>
+</html>
